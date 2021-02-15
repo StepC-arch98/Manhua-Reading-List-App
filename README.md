@@ -2,7 +2,7 @@
 
 ## A Manhua Reading Tracker
 
-A manhua reading tracker is meant to track a reading collection of manhuas. A manhua is a comic genre produced in China. 
+A **manhua reading tracker** is meant to track a reading collection of manhuas. A manhua is a comic genre produced in China. 
 The application can be used to keep record of other reading 
 materials as desired, however I am narrowing this application to track only manhuas, but
 more specifically for an audience that reads translated manhuas. 
@@ -22,6 +22,6 @@ manhuas I read and have read. Hence, I hope that by solving a problem of mine by
 ## User Stories
 My user stories:
 -	As a user, I want to be able to add a manhua to my reading list
--	As a user, I want to be able to print the list of manhuas on my reading list
+-	As a user, I want to be able to print a manhua from my reading list
 -	As a user, I want to be able to edit a reading status of a manhua
 -	As a user, I want to be able to edit a website of a manhua

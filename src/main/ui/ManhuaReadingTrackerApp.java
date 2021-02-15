@@ -18,7 +18,7 @@ public class ManhuaReadingTrackerApp {
     // EFFECTS: processes user input
     private void runManhuaReadingTracker() {
         while (true) {
-            displayMenu();;
+            displayMenu();
             String comm = null;
             if (comm == "a") {
                 addManhua();
@@ -26,8 +26,7 @@ public class ManhuaReadingTrackerApp {
                 editWebsite();
             } else if (comm == "s") {
                 editStatus();
-            } else if (comm == "p") {
-                printManhua();
+                return;
             }
         }
     }
@@ -41,8 +40,6 @@ public class ManhuaReadingTrackerApp {
             editWebsite();
         } else if (command.equals("c")) {
             editStatus();
-        } else if (command.equals("p")) {
-            printManhua();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -50,10 +47,10 @@ public class ManhuaReadingTrackerApp {
 
     // EFFECTS: displays menu of options to user
     private void displayMenu() {
-        System.out.println("Add Manhua");
-        System.out.println("Remove Manhua");
-        System.out.println("Change Reading Status");
-        System.out.println("Print Manhua List");
+        System.out.println("\ta -> Add Manhua");
+        System.out.println("\tr ->Remove Manhua");
+        System.out.println("\ts -> Change Reading Status");
+        System.out.println("\tp -> Print Manhua List");
     }
 
     // MODIFIES: this
@@ -72,19 +69,20 @@ public class ManhuaReadingTrackerApp {
         String manhuawebsite = scanner.nextLine();
     }
 
-    // MODIFIES: this
-    // EFFECTS: processes user input
-    private void printManhua(List<Manhua> manhuaList) {
-        for (Manhua manhua: manhuaList) {
-            System.out.println(manhua.toString());
-        }
-    }
 
     // MODIFIES: this
     // EFFECTS: processes user input
     private void editStatus() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Status: ");
-    String manhuaStatus = scanner.nextLine();
+        String manhuaStatus = scanner.nextLine();
+    }
+
+
+    // MODIFIES: this
+    // EFFECTS: processes user input
+    private void printManhua(Manhua selected) {
+        System.out.println("Manhua: ");
     }
 }
+
