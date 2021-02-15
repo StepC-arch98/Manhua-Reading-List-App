@@ -22,7 +22,6 @@ manhuas I read and have read. Hence, I hope that by solving a problem of mine by
 ## User Stories
 My user stories:
 -	As a user, I want to be able to add a manhua to my reading list
--	As a user, I want to be able to view the list of manhuas on my reading list
--	As a user, I want to be able to mark a reading status on my list
--	As a user, I want to be able to delete a manhua from my list
--	As a user, I want to be able to select a manhua in my collection and rate it on a scale of one to five stars 
+-	As a user, I want to be able to print the list of manhuas on my reading list
+-	As a user, I want to be able to edit a reading status of a manhua
+-	As a user, I want to be able to edit a website of a manhua

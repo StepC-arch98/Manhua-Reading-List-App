@@ -39,7 +39,7 @@ public class ManhuaList {
     }
 
     // EFFECTS:
-    public int size() {
+    public int size(Manhua m) {
         return manhua.size();
     }
 }
