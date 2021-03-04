@@ -52,11 +52,13 @@ class ManhuaListTest {
 
     @Test
     void testGetManhuaList() {
+        assertEquals(0, testManhuaList.getManhuaList().size());
         testManhuaList.addManhua(manhua1);
         testManhuaList.addManhua(manhua2);
         testManhuaList.addManhua(manhua3);
-        assertEquals(3, testManhuaList.amount());
+        assertEquals(3, testManhuaList.getManhuaList().size());
     }
+
     @Test
     void testContainsManhuaWithEmptyList() {
         assertEquals(0, testManhuaList.amount());
