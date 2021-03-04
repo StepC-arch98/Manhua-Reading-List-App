@@ -1,55 +1,29 @@
 package model;
 
-// Represents a manhua having a reading status and rating (in numbers from 1 to 5)
+// Represents a manhua having a title name and a website name
 public class Manhua {
-    private String name;                  // manhua name
-    private String website;               // the manhua website name
-    private String status;                // the reading status of a manhua
+    private String title;                  // the manhua's title
+    private String website;               // the manhua's website name
 
-    /*
-     * REQUIRES:
-     * MODIFIES:
-     * EFFECTS:
-     */
-    public Manhua(String manhuaName, String websiteName, String initialReadingStatus) {
-        name = manhuaName;
-        website = websiteName;
-        if (initialReadingStatus != "Currently Reading" && initialReadingStatus != "Finished") {
-            status = "To Be Read";
-        } else {
-            status = initialReadingStatus;
-        }
+    // REQUIRES: manhuaTitle and websiteName have a non-zero length
+    // MODIFIES: nothing
+    // EFFECTS: constructs a manhua with title set to manhuaTitle and website set to websiteName
+    public Manhua(String manhuaTitle, String websiteName) {
+        this.title = manhuaTitle;
+        this.website = websiteName;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
     public String getWebsite() {
         return website;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    /*
-     * REQUIRES:
-     * MODIFIES:
-     * EFFECTS:
-     */
-    public String editStatus(String changedStatus) {
-        status = changedStatus;
-        return status;
-    }
-
-    /*
-     * REQUIRES:
-     * MODIFIES:
-     * EFFECTS:
-     */
-    @Override
-    public String toString() {
-        return "[ name = " + name + ", website = " + website + ", status = " + status + "]";
+    // EFFECTS: formats string to given format
+    public String getFormatted() {
+        String format = "Title: %s , Website: %s";
+        return String.format(format, title, website);
     }
 }

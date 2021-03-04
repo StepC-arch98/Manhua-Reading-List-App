@@ -1,46 +1,69 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 
-// Represents a list of manhuas
+// Represents a reading list that keeps track of manhuas
 public class ManhuaList {
-    private List<Manhua> manhua;
+    private ArrayList<Manhua> manhuaList;
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // REQUIRES: nothing
+    // MODIFIES: nothing
+    // EFFECTS: initializes each new manhuaList as an empty list
     public ManhuaList() {
-        manhua = new ArrayList<>();
+        manhuaList = new ArrayList<>();
     }
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
-    public void addManhua(Manhua m) {
-        if (!contains(m)) {
-            manhua.add(m);
+    // REQUIRES: nothing
+    // MODIFIES: this
+    // EFFECTS: add given manhua if it is not in the manhuaList, otherwise do nothing
+    public void addManhua(Manhua manhua) {
+        if (!containsManhua(manhua.getTitle(), manhua.getWebsite())) {
+            manhuaList.add(manhua);
         }
     }
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
-    public void removeManhua(Manhua m) {
-        manhua.remove(m);
-
+    // REQUIRES: nothing
+    // MODIFIES: this
+    // EFFECTS: remove given manhua if it is in the manhuaList, otherwise do nothing
+    public void removeManhua(Manhua manhua) {
+        manhuaList.remove(manhua);
     }
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
-    public boolean contains(Manhua m) {
-        return manhua.contains(m);
+    public ArrayList<Manhua> getManhuaList() {
+        return manhuaList;
     }
 
-    // EFFECTS:
-    public int size(Manhua m) {
-        return manhua.size();
+    // REQUIRES: nothing
+    // MODIFIES: nothing
+    // EFFECTS: check if the given manhua is in the manhuaList
+    public boolean containsManhua(String manhuaTitle, String website) {
+        for (Manhua manhua : manhuaList) {
+            if ((manhua.getTitle().equals(manhuaTitle)) & manhua.getWebsite().equals(website)) {
+                return manhuaList.contains(manhua);
+            }
+        }
+        return false;
+    }
+
+
+    // REQUIRES: manhuaTitle is case sensitive
+    // MODIFIES: nothing
+    // EFFECTS: given the title of a manhua return the Manhua with given name, otherwise return null
+    public Manhua getManhua(String manhuaTitle) {
+        for (Manhua m : manhuaList) {
+            if (m.getTitle().equals(manhuaTitle)) {
+                return m;
+            }
+        }
+        return null;
+    }
+
+    // REQUIRES: nothing
+    // MODIFIES: nothing
+    // EFFECTS: return number of manhuas  in the list
+    public int amount() {
+        return manhuaList.size();
     }
 }
 
