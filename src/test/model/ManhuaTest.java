@@ -19,6 +19,12 @@ class ManhuaTest {
         assertEquals("The Fatal Kiss", testManhua.getTitle());
         assertEquals("Manga Sy", testManhua.getWebsite());
     }
+
+    @Test
+    void testGetFormatted() {
+        assertEquals("Title: The Fatal Kiss , Website: Manga Sy", testManhua.getFormatted());
+
+    }
 }
 
 

@@ -12,13 +12,13 @@ public class ManhuaReadingListApp {
     private ManhuaList manhuaList;
     private Scanner input;
 
-
+    // Code extracted from AccountNotRobust-TellerApp
     // EFFECTS: runs the reading list application
     public ManhuaReadingListApp() {
         runManhuaReadingList();
     }
 
-
+    // Code extracted from AccountNotRobust-TellerApp
     // MODIFIES: nothing
     // EFFECTS: processes user input
     private void runManhuaReadingList() {
@@ -50,6 +50,7 @@ public class ManhuaReadingListApp {
         return scanner.nextLine();
     }
 
+    // Code extracted from AccountNotRobust-TellerApp
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processUserCommand(String command) {
@@ -66,6 +67,7 @@ public class ManhuaReadingListApp {
         }
     }
 
+    // Code extracted from AccountNotRobust-TellerApp
     // MODIFIES: this
     // EFFECTS: initializes list
     private void init() {
@@ -73,7 +75,7 @@ public class ManhuaReadingListApp {
         input = new Scanner(System.in);
     }
 
-
+    // Code extracted from AccountNotRobust-TellerApp
     // EFFECTS: display menu of options to user
     private void displayMenu() {
         System.out.println("\nSelect from:");
