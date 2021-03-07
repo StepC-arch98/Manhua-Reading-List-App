@@ -2,11 +2,10 @@ package model;
 
 // Represents a manhua having a title name and a website name
 public class Manhua {
-    private String title;                  // the manhua's title
-    private String website;               // the manhua's website name
+    private String title;                  // the manhua's title name
+    private String website;               // the manhua's website source name
 
     // REQUIRES: manhuaTitle and websiteName have a non-zero length
-    // MODIFIES: nothing
     // EFFECTS: constructs a manhua with title set to manhuaTitle and website set to websiteName
     public Manhua(String manhuaTitle, String websiteName) {
         this.title = manhuaTitle;
@@ -21,9 +20,8 @@ public class Manhua {
         return website;
     }
 
-    // EFFECTS: formats string to given format
-    public String getFormatted() {
-        String format = "Title: %s , Website: %s";
-        return String.format(format, title, website);
+    // EFFECTS: returns string in formatted version
+    public String toFormat() {
+        return "Title = " + title + ", Website = " + website + "";
     }
 }

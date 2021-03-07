@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//Unit tests for Manhua
+// Unit tests for Manhua Class
 class ManhuaTest {
     private Manhua testManhua;
 
@@ -21,9 +21,9 @@ class ManhuaTest {
     }
 
     @Test
-    void testGetFormatted() {
-        assertEquals("Title: The Fatal Kiss , Website: Manga Sy", testManhua.getFormatted());
-
+    void testToFormat() {
+        assertEquals("Title = The Fatal Kiss, Website = Manga Sy", testManhua.toFormat());
+        assertTrue( testManhua.toFormat().contains("Title = The Fatal Kiss, Website = Manga Sy"));
     }
 }
 

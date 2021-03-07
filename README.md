@@ -1,27 +1,23 @@
 # My First Personal Project
 
-## A Manhua Reading Tracker
+## **A Manhua Reading List Application**
 
-A **manhua reading tracker** is meant to track a reading collection of manhuas. A manhua is a comic genre produced in China. 
-The application can be used to keep record of other reading 
-materials as desired, however I am narrowing this application to track only manhuas, but
-more specifically for an audience that reads translated manhuas. 
+A *manhua reading list application* is meant to keep track of a user's reading collection of manhuas. A manhua is a comic 
+genre originated in China. The application can be used by users to keep record of any reading materials as desired, 
+however I am targeting this application to track a list of manhuas, more specifically for an audience that reads 
+translated manhuas. 
 
-This idea arose from the struggle that I have seen other manhua readers like me 
-encounter. This struggle is
-to keep track of the manhuas a person reads because these can be found from so many different websites where other 
-members of the community
-translate for free, rather than found on a single
-reading
-application. Likewise, because they are released per chapter rather than as a whole like books, keeping track of which
-chapter I last read is tiresome. Thus, this project interests
-me because the more I find manhuas to read, and from different sources, the more difficult it is to track all the 
-manhuas I read and have read. Hence, I hope that by solving a problem of mine by creating a project for my own use,
- I can also help others in the same situation. 
+This project idea arose from the struggle that I have seen manhua readers like me encounter. This struggle is to 
+keep track of the manhuas I read because these can be found on different online sources where other members of the 
+community translate for free. Likewise, manhuas are released per chapter rather than complete, thus keeping track of 
+which chapter I last read is easy to forget. Sometimes I even forget which manhuas I am reading from many. Thus, this 
+project interests me because the more I find manhuas to read from numerous sources, the more difficult it is to keep 
+track of my reading. Hence, I hope to solve my problem through this project for personal use, and I hope to help other 
+readers in the same situation. 
  
-## User Stories
+## **User Stories**
 My user stories:
 -	As a user, I want to be able to add a manhua to my reading list
 -	As a user, I want to be able to remove a manhua from my reading list
--	As a user, I want to be able to look for a manhua from my reading list
+-	As a user, I want to be able to search for a manhua from my reading list
 -	As a user, I want to be able to view all manhuas in my reading list 
