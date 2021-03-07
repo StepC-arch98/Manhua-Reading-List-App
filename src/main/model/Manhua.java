@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents a manhua having a title name and a website name
-public class Manhua {
+public class Manhua implements Writable {
     private String title;                  // the manhua's title name
     private String website;               // the manhua's website source name
 
@@ -23,5 +26,13 @@ public class Manhua {
     // EFFECTS: returns string in formatted version
     public String toFormat() {
         return "Title = " + title + ", Website = " + website + "";
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("title", title);
+        json.put("website", website);
+        return json;
     }
 }

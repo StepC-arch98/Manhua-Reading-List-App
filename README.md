@@ -21,3 +21,5 @@ My user stories:
 -	As a user, I want to be able to remove a manhua from my reading list
 -	As a user, I want to be able to search for a manhua from my reading list
 -	As a user, I want to be able to view all manhuas in my reading list 
+-	As a user, I want to be able to save my manhua reading list to file 
+-	As a user, I want to be able to load my manhua reading list from file 

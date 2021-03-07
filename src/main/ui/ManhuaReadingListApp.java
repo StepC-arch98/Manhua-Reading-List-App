@@ -2,18 +2,29 @@ package ui;
 
 import model.Manhua;
 import model.ManhuaList;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 // Manhua reading list application
 public class ManhuaReadingListApp {
-    private Manhua manhua;
-    private ManhuaList manhuaList;
+    private static final String JSON_STORE = "./data/manhualist.json";
     private Scanner input;
+    private ManhuaList manhuaList;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // Code extracted from AccountNotRobust-TellerApp
-    // EFFECTS: runs the reading list application
-    public ManhuaReadingListApp() {
+    // EFFECTS: constructs manhua list and runs the reading list application
+    public ManhuaReadingListApp() throws FileNotFoundException {
+        input = new Scanner(System.in);
+        manhuaList = new ManhuaList("Estephany's manhua list");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runManhuaReadingList();
     }
 
@@ -49,10 +60,14 @@ public class ManhuaReadingListApp {
             addManhua();
         } else if (command.equals("r")) {
             removeManhua();
-        } else if (command.equals("s")) {
+        } else if (command.equals("t")) {
             searchByTitle();
         } else if (command.equals("v")) {
             viewList();
+        } else if (command.equals("s")) {
+            saveManhuaList();
+        } else if (command.equals("l")) {
+            loadManhuaList();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -62,7 +77,7 @@ public class ManhuaReadingListApp {
     // MODIFIES: this
     // EFFECTS: initializes manhua reading list and scanner
     private void initialization() {
-        manhuaList = new ManhuaList();
+        manhuaList = new ManhuaList(manhuaList.getName());
         input = new Scanner(System.in);
     }
 
@@ -72,15 +87,17 @@ public class ManhuaReadingListApp {
         System.out.println("\nSelect from:");
         System.out.println("\ta -> add");
         System.out.println("\tr -> remove");
-        System.out.println("\ts -> search by title");
+        System.out.println("\tt -> search by title");
         System.out.println("\tv -> view list");
+        System.out.println("\ts -> save manhua list to file");
+        System.out.println("\tl -> load manhua list from file");
         System.out.println("\tq -> quit");
     }
 
     // MODIFIES: this
     // EFFECTS: conducts command to add manhua
     private void addManhua() {
-        Scanner input = new Scanner(System.in);
+        input = new Scanner(System.in);
         System.out.println("Enter a manhua title: ");
         String manhuaTitle = input.nextLine();
         System.out.println("Enter the corresponding website: ");
@@ -92,7 +109,7 @@ public class ManhuaReadingListApp {
     // MODIFIES: this
     // EFFECTS: conducts command to remove manhua
     private void removeManhua() {
-        Scanner input = new Scanner(System.in);
+        input = new Scanner(System.in);
         System.out.println("Enter the manhua's title to remove: ");
         String manhuaTitle = input.nextLine();
         Manhua manhua = manhuaList.getManhua(manhuaTitle);
@@ -106,7 +123,7 @@ public class ManhuaReadingListApp {
 
     // EFFECTS: conducts and returns search result prompted by user input
     private void searchByTitle() {
-        Scanner input = new Scanner(System.in);
+        input = new Scanner(System.in);
         System.out.println("Enter the manhua's title to search: ");
         String manhuaTitle = input.nextLine();
         Manhua manhua = manhuaList.getManhua(manhuaTitle);
@@ -121,6 +138,29 @@ public class ManhuaReadingListApp {
     private void viewList() {
         for (Manhua manhua : manhuaList.getManhuaList()) {
             System.out.println(manhua.toFormat());
+        }
+    }
+
+    // EFFECTS: saves the manhua list to file
+    private void saveManhuaList() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(manhuaList);
+            jsonWriter.close();
+            System.out.println("Saved " + manhuaList.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads manhua list from file
+    private void loadManhuaList() {
+        try {
+            manhuaList = jsonReader.read();
+            System.out.println("Loaded " + manhuaList.getName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 }

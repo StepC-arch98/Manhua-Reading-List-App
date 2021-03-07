@@ -1,14 +1,24 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
 // Represents a reading list of manhuas
-public class ManhuaList {
+public class ManhuaList implements Writable {
+    private String name;
     private ArrayList<Manhua> manhuaList;
 
-    // EFFECTS: initializes each new manhua list as an empty list
-    public ManhuaList() {
+    // EFFECTS: initializes each new manhua list with a name and as an empty list of manhuas
+    public ManhuaList(String name) {
+        this.name = name;
         manhuaList = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
     }
 
     public ArrayList<Manhua> getManhuaList() {
@@ -55,6 +65,25 @@ public class ManhuaList {
     // EFFECTS: returns number of manhuas in the manhua list
     public int amount() {
         return manhuaList.size();
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("manhua list", manhuasToJson());
+        return json;
+    }
+
+    // EFFECTS: returns manhuas in this manhua list as a JSON array
+    private JSONArray manhuasToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Manhua t : manhuaList) {
+            jsonArray.put(t.toJson());
+        }
+
+        return jsonArray;
     }
 }
 

@@ -25,6 +25,12 @@ class ManhuaTest {
         assertEquals("Title = The Fatal Kiss, Website = Manga Sy", testManhua.toFormat());
         assertTrue( testManhua.toFormat().contains("Title = The Fatal Kiss, Website = Manga Sy"));
     }
+//
+//    @Test
+//    void
+//    testToJson() {
+//
+//    }
 }
 
 

@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,13 +10,13 @@ import static org.junit.jupiter.api.Assertions.*;
 // Unit tests for ManhuaList Class
 class ManhuaListTest {
     private ManhuaList testManhuaList;
-        Manhua manhua1;
-        Manhua manhua2;
-        Manhua manhua3;
+    private    Manhua manhua1;
+    private    Manhua manhua2;
+    private    Manhua manhua3;
 
     @BeforeEach
     void runBefore() {
-        testManhuaList = new ManhuaList();
+        testManhuaList = new ManhuaList("Estephany's manhua list");
         manhua1 = new Manhua("The Fatal Kiss","Manga Sy");
         manhua2 = new Manhua("Aidin", "Zinmanga");
         manhua3 = new Manhua("Once More", "WebComics");
@@ -23,6 +25,11 @@ class ManhuaListTest {
     @Test
     void testConstructor() {
         assertEquals(0,testManhuaList.amount());
+    }
+
+    @Test
+    void testGetName() {
+
     }
 
     @Test
@@ -131,5 +138,12 @@ class ManhuaListTest {
         testManhuaList.addManhua(manhua2);
         assertEquals(2, testManhuaList.amount());
     }
-
+//
+//    @Test
+//    void testToJson() {
+//    }
+//
+//    @Test
+//    void testManhuasToJson() {
+//    }
 }
