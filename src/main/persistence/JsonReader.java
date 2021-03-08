@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 import org.json.*;
 
-// Code sourced from JsonSerializationDemo - JsonReader
+// Citation: Code sourced and modified from JsonSerializationDemo - JsonReader Class
 // Represents a reader that reads manhua list from JSON data stored in file
 public class JsonReader {
     private String source;
@@ -22,7 +22,7 @@ public class JsonReader {
     }
 
     // EFFECTS: reads manhua list from file and returns it;
-    // throws IOException if an error occurs reading data from file
+    //          throws IOException if an error occurs reading data from file
     public ManhuaList read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
@@ -32,38 +32,36 @@ public class JsonReader {
     // EFFECTS: reads source file as string and returns it
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
-
         try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
             stream.forEach(s -> contentBuilder.append(s));
         }
-
         return contentBuilder.toString();
     }
 
     // EFFECTS: parses manhua list from JSON object and returns it
     private ManhuaList parseManhuaList(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        ManhuaList ml = new ManhuaList(name);
-        addManhuas(ml, jsonObject);
-        return ml;
+        ManhuaList manhuaList = new ManhuaList(name);
+        addManhuas(manhuaList, jsonObject);
+        return manhuaList;
     }
 
-    // MODIFIES: ml
+    // MODIFIES: manhuaList
     // EFFECTS: parses manhuas from JSON object and adds them to manhua list
-    private void addManhuas(ManhuaList ml, JSONObject jsonObject) {
-        JSONArray jsonArray = jsonObject.getJSONArray("manhua list");
+    private void addManhuas(ManhuaList manhuaList, JSONObject jsonObject) {
+        JSONArray jsonArray = jsonObject.getJSONArray("manhuas");
         for (Object json : jsonArray) {
             JSONObject nextManhua = (JSONObject) json;
-            addManhua(ml, nextManhua);
+            addManhua(manhuaList, nextManhua);
         }
     }
 
-    // MODIFIES: ml
+    // MODIFIES: manhuaList
     // EFFECTS: parses manhua from JSON object and adds it to manhua list
-    private void addManhua(ManhuaList ml, JSONObject jsonObject) {
+    private void addManhua(ManhuaList manhuaList, JSONObject jsonObject) {
         String title = jsonObject.getString("title");
         String website = String.valueOf(jsonObject.getString("website"));
         Manhua manhua = new Manhua(title, website);
-        ml.addManhua(manhua);
+        manhuaList.addManhua(manhua);
     }
 }

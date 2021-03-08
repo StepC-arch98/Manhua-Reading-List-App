@@ -2,22 +2,26 @@ package persistence;
 
 import model.Manhua;
 import model.ManhuaList;
-import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-// Code sourced from JsonSerializationDemo - JsonReaderTest
+// Citation: Code sourced and modified from JsonSerializationDemo - JsonReaderTest Class
 // Unit tests for JsonReader Class
 class JsonReaderTest extends JsonTest {
+    JsonReader reader;
+    ManhuaList manhuaList;
 
     @Test
     void testReaderNonExistentFile() {
-        JsonReader reader = new JsonReader("./data/noSuchFile.json");
+        reader = new JsonReader("./data/noSuchFile.json");
         try {
-            ManhuaList ml = reader.read();
+            manhuaList = reader.read();
             fail("IOException expected");
         } catch (IOException e) {
             // pass
@@ -26,11 +30,11 @@ class JsonReaderTest extends JsonTest {
 
     @Test
     void testReaderEmptyManhuaList() {
-        JsonReader reader = new JsonReader("./data/testReaderEmptyManhuaList.json");
+        reader = new JsonReader("./data/testReaderEmptyManhuaList.json");
         try {
-            ManhuaList ml = reader.read();
-            assertEquals("My manhua list", ml.getName());
-            assertEquals(0, ml.amount());
+            manhuaList = reader.read();
+            assertEquals("My Manhua List", manhuaList.getName());
+            assertEquals(0, manhuaList.numManhuas());
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
@@ -38,14 +42,14 @@ class JsonReaderTest extends JsonTest {
 
     @Test
     void testReaderGeneralManhuaList() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralManhuaList.json");
+        reader = new JsonReader("./data/testReaderGeneralManhuaList.json");
         try {
-            ManhuaList ml = reader.read();
-            assertEquals("My manhua list", ml.getName());
-            ArrayList<Manhua> manhuaList = ml.getManhuaList();
-            assertEquals(2, manhuaList.size());
-            checkManhua("The Fatal Kiss", "Manga Sy", manhuaList.get(0));
-            checkManhua("Aidin", "Zinmanga", manhuaList.get(1));
+            manhuaList = reader.read();
+            assertEquals("My Manhua List", manhuaList.getName());
+            ArrayList<Manhua> manhuas = manhuaList.getManhuaList();
+            assertEquals(2, manhuas.size());
+            checkManhua("The Fatal Kiss", "Manga Sy", manhuas.get(0));
+            checkManhua("Aidin", "Zinmanga", manhuas.get(1));
         } catch (IOException e) {
             fail("Couldn't read from file");
         }

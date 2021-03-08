@@ -1,7 +1,8 @@
 package model;
 
-import org.json.JSONObject;
 import persistence.Writable;
+
+import org.json.JSONObject;
 
 // Represents a manhua having a title name and a website name
 public class Manhua implements Writable {
@@ -28,8 +29,10 @@ public class Manhua implements Writable {
         return "Title = " + title + ", Website = " + website + "";
     }
 
+    // Citation: Code sourced and modified from JsonSerializationDemo - Thingy Class
+    // EFFECTS: see interface Writable
     @Override
-    public JSONObject toJson() {
+    public JSONObject manhuaToJson() {
         JSONObject json = new JSONObject();
         json.put("title", title);
         json.put("website", website);

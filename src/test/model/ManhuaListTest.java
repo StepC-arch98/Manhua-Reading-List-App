@@ -1,7 +1,5 @@
 package model;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +14,7 @@ class ManhuaListTest {
 
     @BeforeEach
     void runBefore() {
-        testManhuaList = new ManhuaList("Estephany's manhua list");
+        testManhuaList = new ManhuaList("Estephany's Manhua List");
         manhua1 = new Manhua("The Fatal Kiss","Manga Sy");
         manhua2 = new Manhua("Aidin", "Zinmanga");
         manhua3 = new Manhua("Once More", "WebComics");
@@ -24,12 +22,12 @@ class ManhuaListTest {
 
     @Test
     void testConstructor() {
-        assertEquals(0,testManhuaList.amount());
+        assertEquals(0,testManhuaList.numManhuas());
     }
 
     @Test
     void testGetName() {
-
+        assertEquals("Estephany's Manhua List", testManhuaList.getName());
     }
 
     @Test
@@ -43,18 +41,18 @@ class ManhuaListTest {
 
     @Test
     void testAddManhua() {
-        assertEquals(0, testManhuaList.amount());
+        assertEquals(0, testManhuaList.numManhuas());
         testManhuaList.addManhua((manhua1));
-        assertEquals(1, testManhuaList.amount());
+        assertEquals(1, testManhuaList.numManhuas());
         assertTrue(testManhuaList.containsManhua("The Fatal Kiss", "Manga Sy"));
     }
 
     @Test
     void testAddManhuaDouble() {
-        assertEquals(0, testManhuaList.amount());
+        assertEquals(0, testManhuaList.numManhuas());
         testManhuaList.addManhua((manhua1));
         testManhuaList.addManhua((manhua1));
-        assertEquals(1, testManhuaList.amount());
+        assertEquals(1, testManhuaList.numManhuas());
         assertTrue(testManhuaList.containsManhua(manhua1.getTitle(), manhua1.getWebsite()));
     }
 
@@ -63,14 +61,14 @@ class ManhuaListTest {
         testManhuaList.addManhua(manhua1);
         testManhuaList.addManhua(manhua2);
         testManhuaList.removeManhua(manhua2);
-        assertEquals(1,testManhuaList.amount());
+        assertEquals(1,testManhuaList.numManhuas());
         assertTrue(testManhuaList.containsManhua(manhua1.getTitle(), manhua1.getWebsite()));
         assertFalse(testManhuaList.containsManhua(manhua2.getTitle(), manhua2.getWebsite()));
     }
 
     @Test
     void testContainsManhuaWithEmptyList() {
-        assertEquals(0, testManhuaList.amount());
+        assertEquals(0, testManhuaList.numManhuas());
         assertFalse(testManhuaList.containsManhua(manhua1.getTitle(), manhua1.getWebsite()));
     }
 
@@ -78,7 +76,7 @@ class ManhuaListTest {
     void testContainsManhuaWithManhuaInList() {
         testManhuaList.addManhua(manhua1);
         testManhuaList.addManhua(manhua2);
-        assertEquals(2, testManhuaList.amount());
+        assertEquals(2, testManhuaList.numManhuas());
         assertTrue(testManhuaList.containsManhua(manhua2.getTitle(), manhua2.getWebsite()));
         assertTrue(testManhuaList.containsManhua(manhua1.getTitle(),manhua1.getWebsite()));
         assertFalse(testManhuaList.containsManhua(manhua3.getTitle(), manhua3.getWebsite()));
@@ -89,16 +87,16 @@ class ManhuaListTest {
         testManhuaList.addManhua(manhua1);
         testManhuaList.addManhua(manhua2);
         testManhuaList.addManhua(manhua3);
-        assertEquals(3, testManhuaList.amount());
+        assertEquals(3, testManhuaList.numManhuas());
         testManhuaList.removeManhua(manhua2);
-        assertEquals(2, testManhuaList.amount());
+        assertEquals(2, testManhuaList.numManhuas());
         assertFalse(testManhuaList.containsManhua(manhua2.getTitle(), manhua2.getWebsite()));
         assertTrue(testManhuaList.containsManhua(manhua3.getTitle(), manhua3.getWebsite()));
         assertTrue(testManhuaList.containsManhua(manhua1.getTitle(),manhua1.getWebsite()));    }
 
     @Test
     void testGetManhuaWithEmptyList() {
-        assertEquals(0, testManhuaList.amount());
+        assertEquals(0, testManhuaList.numManhuas());
         assertNull(testManhuaList.getManhua(manhua1.getTitle()));
     }
 
@@ -106,7 +104,7 @@ class ManhuaListTest {
     void testGetManhuaWithManhuaInList() {
         testManhuaList.addManhua(manhua1);
         testManhuaList.addManhua(manhua2);
-        assertEquals(2, testManhuaList.amount());
+        assertEquals(2, testManhuaList.numManhuas());
         assertEquals(manhua2, testManhuaList.getManhua(manhua2.getTitle()));
         assertEquals(manhua1, testManhuaList.getManhua(manhua1.getTitle()));
         assertNull(testManhuaList.getManhua("the fatal kiss"));
@@ -117,9 +115,9 @@ class ManhuaListTest {
         testManhuaList.addManhua(manhua1);
         testManhuaList.addManhua(manhua2);
         testManhuaList.addManhua(manhua3);
-        assertEquals(3, testManhuaList.amount());
+        assertEquals(3, testManhuaList.numManhuas());
         testManhuaList.removeManhua(manhua2);
-        assertEquals(2, testManhuaList.amount());
+        assertEquals(2, testManhuaList.numManhuas());
         assertNull(testManhuaList.getManhua(manhua2.getTitle()));
         assertEquals(manhua3, testManhuaList.getManhua(manhua3.getTitle()));
         assertEquals(manhua1, testManhuaList.getManhua(manhua1.getTitle()));
@@ -128,22 +126,14 @@ class ManhuaListTest {
 
     @Test
     void testAmount() {
-        assertEquals(0, testManhuaList.amount());
+        assertEquals(0, testManhuaList.numManhuas());
         testManhuaList.addManhua(manhua1);
         testManhuaList.addManhua(manhua2);
-        assertEquals(2, testManhuaList.amount());
+        assertEquals(2, testManhuaList.numManhuas());
         testManhuaList.addManhua(manhua1);
         testManhuaList.addManhua(manhua2);
         testManhuaList.addManhua(manhua1);
         testManhuaList.addManhua(manhua2);
-        assertEquals(2, testManhuaList.amount());
+        assertEquals(2, testManhuaList.numManhuas());
     }
-//
-//    @Test
-//    void testToJson() {
-//    }
-//
-//    @Test
-//    void testManhuasToJson() {
-//    }
 }

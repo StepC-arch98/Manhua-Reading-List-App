@@ -6,10 +6,10 @@ import java.io.*;
 
 import org.json.JSONObject;
 
-// Code sourced from JsonSerializationDemo - JsonWriter
+// Citation: Code sourced and modified from JsonSerializationDemo - JsonWriter Class
 // Represents a writer that writes JSON representation of manhua list to file
 public class JsonWriter {
-    private static final int TAB = 4;
+    private static final int TAB = 6;
     private PrintWriter writer;
     private String destination;
 
@@ -27,8 +27,8 @@ public class JsonWriter {
 
     // MODIFIES: this
     // EFFECTS: writes JSON representation of manhua list to file
-    public void write(ManhuaList ml) {
-        JSONObject json = ml.toJson();
+    public void write(ManhuaList manhuaList) {
+        JSONObject json = manhuaList.manhuaToJson();
         saveToFile(json.toString(TAB));
     }
 

@@ -7,7 +7,6 @@ import persistence.JsonWriter;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 // Manhua reading list application
@@ -18,24 +17,25 @@ public class ManhuaReadingListApp {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
-    // Code extracted from AccountNotRobust-TellerApp
+    // Citation: Code sourced and modified from AccountNotRobust - TellerApp Class and
+    //           JsonSerializationDemo - WorkRoomApp Class
     // EFFECTS: constructs manhua list and runs the reading list application
     public ManhuaReadingListApp() throws FileNotFoundException {
         input = new Scanner(System.in);
-        manhuaList = new ManhuaList("Estephany's manhua list");
+        manhuaList = new ManhuaList("Estephany's Manhua List");
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
         runManhuaReadingList();
     }
 
-    // Code extracted from AccountNotRobust-TellerApp
+    // Citation: Code sourced and modified from AccountNotRobust - TellerApp Class
     // MODIFIES: this
     // EFFECTS: processes user input
     private void runManhuaReadingList() {
         boolean keepGoing = true;
         String command = null;
 
-        initialization();
+        input = new Scanner(System.in);
 
         while (keepGoing) {
             displayMenu();
@@ -52,7 +52,7 @@ public class ManhuaReadingListApp {
         System.out.println("\nGoodbye!");
     }
 
-    // Code extracted from AccountNotRobust-TellerApp
+    // Citation: Code sourced and modified from AccountNotRobust - TellerApp Class
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processUserCommand(String command) {
@@ -73,15 +73,7 @@ public class ManhuaReadingListApp {
         }
     }
 
-    // Code extracted from AccountNotRobust-TellerApp
-    // MODIFIES: this
-    // EFFECTS: initializes manhua reading list and scanner
-    private void initialization() {
-        manhuaList = new ManhuaList(manhuaList.getName());
-        input = new Scanner(System.in);
-    }
-
-    // Code extracted from AccountNotRobust-TellerApp
+    // Citation: Code sourced and modified from AccountNotRobust - TellerApp Class
     // EFFECTS: displays menu of options to user
     private void displayMenu() {
         System.out.println("\nSelect from:");
@@ -141,6 +133,7 @@ public class ManhuaReadingListApp {
         }
     }
 
+    // Citation: Code sourced and modified from JsonSerializationDemo - WorkRoomApp Class
     // EFFECTS: saves the manhua list to file
     private void saveManhuaList() {
         try {
@@ -153,6 +146,7 @@ public class ManhuaReadingListApp {
         }
     }
 
+    // Citation: Code sourced and modified from JsonSerializationDemo - WorkRoomApp Class
     // MODIFIES: this
     // EFFECTS: loads manhua list from file
     private void loadManhuaList() {

@@ -4,7 +4,7 @@ import model.Manhua;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-// Code sourced from JsonSerializationDemo - JsonTest
+// Citation: Code sourced and modified from JsonSerializationDemo - JsonTest Class
 public class JsonTest {
     protected void checkManhua(String title, String website, Manhua manhua) {
         assertEquals(title, manhua.getTitle());

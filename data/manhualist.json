@@ -1,13 +1,25 @@
 {
-    "name": "Estephany's manhua list",
-    "manhua list": [
-        {
-            "website": "Hi",
-            "title": "Hi"
-        },
-        {
-            "website": "HEL",
-            "title": "HEL"
-        }
-    ]
+      "manhuas": [
+            {
+                  "website": "hello",
+                  "title": "hahha"
+            },
+            {
+                  "website": "men",
+                  "title": "men"
+            },
+            {
+                  "website": "lan",
+                  "title": "lan"
+            },
+            {
+                  "website": "han",
+                  "title": "han"
+            },
+            {
+                  "website": "laugh",
+                  "title": "laugh"
+            }
+      ],
+      "name": "Estephany's Manhua List"
 }

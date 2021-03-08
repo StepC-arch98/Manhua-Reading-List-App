@@ -1,5 +1,5 @@
 {
-  "manhua list": [
+  "manhuas": [
     {
       "title": "The Fatal Kiss",
       "website": "Manga Sy"
@@ -9,5 +9,5 @@
       "website": "Zinmanga"
     }
   ],
-  "name": "My manhua list"
+  "name": "My Manhua List"
 }
