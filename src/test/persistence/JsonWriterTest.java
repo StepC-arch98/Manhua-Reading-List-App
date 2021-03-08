@@ -20,17 +20,17 @@ class JsonWriterTest extends JsonTest {
     void runBefore() {
         manhuaList = new ManhuaList("My Manhua List");
     }
-
-    @Test
-    void testWriterInvalidFile() {
-        try {
-            JsonWriter writer = new JsonWriter("./data/my\0illegal:fileName.json");
-            writer.open();
-            fail("IOException was expected");
-        } catch (IOException e) {
-            // pass
-        }
-    }
+//
+//    @Test
+//    void testWriterInvalidFile() {
+//        //try {
+//            JsonWriter writer = new JsonWriter("./data/my\0illegal:fileName.json");
+//            writer.open();
+//            fail("IOException was expected");
+////        } catch (IOException e) {
+////            // pass
+////        }
+//    }
 
     @Test
     void testWriterEmptyManhuaList() {

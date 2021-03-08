@@ -20,7 +20,7 @@ public class ManhuaReadingListApp {
     // Citation: Code sourced and modified from AccountNotRobust - TellerApp Class and
     //           JsonSerializationDemo - WorkRoomApp Class
     // EFFECTS: constructs manhua list and runs the reading list application
-    public ManhuaReadingListApp() throws FileNotFoundException {
+    public ManhuaReadingListApp() {
         input = new Scanner(System.in);
         manhuaList = new ManhuaList("Estephany's Manhua List");
         jsonWriter = new JsonWriter(JSON_STORE);
