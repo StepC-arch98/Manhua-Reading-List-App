@@ -1,12 +1,16 @@
 {
       "manhuas": [
             {
-                  "website": "add",
-                  "title": "add"
+                  "website": "la",
+                  "title": "La"
             },
             {
                   "website": "lop",
-                  "title": "lan"
+                  "title": "flow"
+            },
+            {
+                  "website": "lop",
+                  "title": "pop"
             }
       ],
       "name": "Estephany's Manhua List"

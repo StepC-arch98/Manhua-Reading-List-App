@@ -12,20 +12,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 // Citation: Code sourced and modified from JsonSerializationDemo - JsonReaderTest Class
 // Unit tests for JsonReader Class
-class JsonReaderTest extends JsonTest {
+class JsonReaderTest {
     JsonReader reader;
     ManhuaList manhuaList;
 
-//    @Test
-//    void testReaderNonExistentFile() {
-//        reader = new JsonReader("./data/noSuchFile.json");
-//        try {
-//            manhuaList = reader.read();
-//            fail("IOException expected");
-//        } catch (IOException e) {
-//            // pass
-//        }
-//    }
+    @Test
+    void testReaderNonExistentFile() {
+        reader = new JsonReader("./data/noSuchFile.json");
+        try {
+            ManhuaList manhuaList = reader.read();
+            fail("IOException expected");
+        } catch (IOException e) {
+            // pass
+        }
+    }
 
     @Test
     void testReaderEmptyManhuaList() {
@@ -52,5 +52,10 @@ class JsonReaderTest extends JsonTest {
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
+    }
+
+    protected void checkManhua(String title, String website, Manhua manhua) {
+        assertEquals(title, manhua.getTitle());
+        assertEquals(website, manhua.getWebsite());
     }
 }

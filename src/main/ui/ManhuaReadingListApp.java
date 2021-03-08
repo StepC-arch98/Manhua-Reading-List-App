@@ -12,10 +12,10 @@ import java.util.Scanner;
 // Manhua reading list application
 public class ManhuaReadingListApp {
     private static final String JSON_STORE = "./data/manhualist.json";
-    private Scanner input;
-    private ManhuaList manhuaList;
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
+    private Scanner input;                          // input reader
+    private ManhuaList manhuaList;                  // list of manhuas
+    private JsonWriter jsonWriter;                  // Json file writer or file saver
+    private JsonReader jsonReader;                  // Json file reader or file loader
 
     // Citation: Code sourced and modified from AccountNotRobust - TellerApp Class and
     //           JsonSerializationDemo - WorkRoomApp Class
@@ -53,6 +53,7 @@ public class ManhuaReadingListApp {
     }
 
     // Citation: Code sourced and modified from AccountNotRobust - TellerApp Class
+    // REQUIRES: command cannot be an empty string
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processUserCommand(String command) {

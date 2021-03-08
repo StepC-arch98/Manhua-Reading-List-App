@@ -9,15 +9,17 @@ import org.json.JSONObject;
 
 // Represents a reading list of manhuas
 public class ManhuaList implements Writable {
-    private String name;
-    private ArrayList<Manhua> manhuaList;
+    private String name;                       // the manhua list name
+    private ArrayList<Manhua> manhuaList;      // manhua list in array
 
+    // REQUIRES: name has a non-zero length
     // EFFECTS: constructs each new manhua list with a name and as an empty list of manhuas
     public ManhuaList(String name) {
         this.name = name;
         manhuaList = new ArrayList<>();
     }
 
+    // EFFECTS: returns manhua list name
     public String getName() {
         return name;
     }
@@ -41,7 +43,6 @@ public class ManhuaList implements Writable {
         manhuaList.remove(manhua);
     }
 
-    // REQUIRES: title and website have a non-zero length
     // EFFECTS: returns true if there is a manhua with given title and website contained in the manhua list,
     //          otherwise returns false
     public boolean containsManhua(String title, String website) {
@@ -53,7 +54,6 @@ public class ManhuaList implements Writable {
         return false;
     }
 
-    // MODIFIES: title has a non-zero length
     // EFFECTS: returns the manhua with given title name, otherwise returns null
     public Manhua getManhua(String title) {
         for (Manhua manhua : manhuaList) {

@@ -16,10 +16,12 @@ public class Manhua implements Writable {
         this.website = websiteName;
     }
 
+    // EFFECTS: returns manhua's title name
     public String getTitle() {
         return title;
     }
 
+    // EFFECTS: returns manhua's website source name
     public String getWebsite() {
         return website;
     }

@@ -9,10 +9,11 @@ import org.json.JSONObject;
 // Citation: Code sourced and modified from JsonSerializationDemo - JsonWriter Class
 // Represents a writer that writes JSON representation of manhua list to file
 public class JsonWriter {
-    private static final int TAB = 6;
-    private PrintWriter writer;
-    private String destination;
+    private static final int TAB = 6;                    // indentation space for Json file
+    private PrintWriter writer;                          // Json file writer
+    private String destination;                          // destination file link
 
+    // REQUIRES: destination has a non-zero length
     // EFFECTS: constructs writer to write to destination file
     public JsonWriter(String destination) {
         this.destination = destination;

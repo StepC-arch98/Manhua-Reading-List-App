@@ -14,8 +14,9 @@ import org.json.*;
 // Citation: Code sourced and modified from JsonSerializationDemo - JsonReader Class
 // Represents a reader that reads manhua list from JSON data stored in file
 public class JsonReader {
-    private String source;
+    private String source;                 // file source link
 
+    // REQUIRES: source has a non-zero length and must exist
     // EFFECTS: constructs reader to read from source file
     public JsonReader(String source) {
         this.source = source;
@@ -29,7 +30,9 @@ public class JsonReader {
         return parseManhuaList(jsonObject);
     }
 
+    // REQUIRES: source must exist
     // EFFECTS: reads source file as string and returns it
+    //          throws IOException if an error occurs reading from file
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
         try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
