@@ -16,14 +16,15 @@ import java.util.ArrayList;
 // Citation: Code sourced and modified from C3-LectureLabStarter-IntersectionGUI class, DrawingEditor.java-
 //           DrawingEditor class, Oracle Java Tutorials Documentation(How to Use Lists, Introduction to Event Listeners,
 //           Using Swing Components: Examples)
-// Manhua reading list application in GUI
+// Manhua reading list application's GUI
 public class ManhuaReadingListGUI extends JFrame {
+    private static final int WIDTH = 800;
+    private static final int HEIGHT = 500;
+
     private static final String JSON_STORE = "./data/manhualist.json";
     private JsonReader jsonReader;
     private JsonWriter jsonWriter;
-
-    public static final int WIDTH = 800;
-    public static final int HEIGHT = 500;
+    private ManhuaList manhuaList;
 
     private JPanel topPanel;
     private JPanel bottomPanel;
@@ -36,16 +37,14 @@ public class ManhuaReadingListGUI extends JFrame {
     private JList jlist;
     private DefaultListModel<String> listModel;
 
-    ManhuaList manhuaList = new ManhuaList("My Manhua Reading List");
-
     // EFFECTS: initializes fields, graphics, user interaction;
     //          assigns JFrame this object
     public ManhuaReadingListGUI() {
         super("Manhua Reading List");
+        frame = this;
         initializeFields();
         initializeGraphics();
-        initializeInteraction();
-        frame = this;
+        initializeUserInteraction();
     }
 
     // EFFECTS: set the orientation panels;
@@ -60,6 +59,7 @@ public class ManhuaReadingListGUI extends JFrame {
         loadManhuaButton = new JButton("Load Reading List");
         listModel = new DefaultListModel<>();
         jlist = new JList(listModel);
+        manhuaList = new ManhuaList("My Manhua Reading List");
         jsonReader = new JsonReader(JSON_STORE);
         jsonWriter = new JsonWriter(JSON_STORE);
     }
@@ -69,7 +69,7 @@ public class ManhuaReadingListGUI extends JFrame {
     private void initializeGraphics() {
         setLayout(new FlowLayout());
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
-        createTools();
+        setBothPanels();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -89,10 +89,10 @@ public class ManhuaReadingListGUI extends JFrame {
         bottomPanel.add(jlist, BorderLayout.CENTER);
         bottomPanel.add(viewAllManhuaButton, BorderLayout.SOUTH);
 
-        JScrollPane listScroller = new JScrollPane(jlist);
-        bottomPanel.add(listScroller);
-        listScroller.setPreferredSize(new Dimension(500, 350));
-        listScroller.setViewportView(jlist);
+        JScrollPane scroller = new JScrollPane(jlist);
+        bottomPanel.add(scroller);
+        scroller.setPreferredSize(new Dimension(500, 350));
+        scroller.setViewportView(jlist);
 
         jlist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jlist.setLayoutOrientation(JList.VERTICAL);
@@ -100,16 +100,16 @@ public class ManhuaReadingListGUI extends JFrame {
     }
 
     // EFFECTS: sets the top and bottom panels
-    private void createTools() {
+    private void setBothPanels() {
         setTopPanel();
-        setBottomPanel();
-
         add(topPanel);
+
+        setBottomPanel();
         add(bottomPanel);
     }
 
     // EFFECTS: initializes all buttons for user interaction
-    private void initializeInteraction() {
+    private void initializeUserInteraction() {
         initializeAddManhuaButton();
         initializeRemoveManhuaButton();
         initializeViewAllManhuaButton();
@@ -128,8 +128,8 @@ public class ManhuaReadingListGUI extends JFrame {
                 String manhuaWebsite = JOptionPane.showInputDialog(jlist,
                         "Enter the corresponding website: ");
                 Manhua manhua = new Manhua(manhuaTitle, manhuaWebsite);
-                boolean warningMessage = manhuaList.containsManhua(manhua.getTitle(), manhua.getWebsite());
-                if (warningMessage) {
+                boolean invalidMessage = manhuaList.containsManhua(manhua.getTitle(), manhua.getWebsite());
+                if (invalidMessage) {
                     JOptionPane.showMessageDialog(frame, "Manhua already exists.");
                     return;
                 } else if (manhuaTitle == null || manhuaWebsite == null || manhuaTitle.isEmpty()
@@ -152,9 +152,6 @@ public class ManhuaReadingListGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String manhuaTitle = JOptionPane.showInputDialog(jlist,
                         "Enter the manhua's title to remove: ");
-                String manhuaWebsite = JOptionPane.showInputDialog(jlist,
-                        "Enter the corresponding website: ");
-                Manhua manhua = new Manhua(manhuaTitle, manhuaWebsite);
                 if (manhuaList.getManhua(manhuaTitle) == null) {
                     JOptionPane.showMessageDialog(frame, "Cannot find the manhua to remove.");
                     } else {
@@ -194,6 +191,7 @@ public class ManhuaReadingListGUI extends JFrame {
                     ex.printStackTrace();
                 }
                 JOptionPane.showMessageDialog(frame, "Reading List Saved!");
+                listModel.clear();
             }
         });
     }
