@@ -1,17 +1,13 @@
 {
       "manhuas": [
             {
-                  "website": "la",
-                  "title": "La"
+                  "website": "vfvf",
+                  "title": "vfvf"
             },
             {
-                  "website": "lop",
-                  "title": "flow"
-            },
-            {
-                  "website": "lop",
-                  "title": "pop"
+                  "website": "hola",
+                  "title": "hola"
             }
       ],
-      "name": "Estephany's Manhua List"
+      "name": "My Manhua Reading List"
 }
