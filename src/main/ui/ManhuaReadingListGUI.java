@@ -77,6 +77,7 @@ public class ManhuaReadingListGUI extends JFrame {
 
     // EFFECTS: adds all the buttons to the top panel of the box layout (this is usually default display)
     private void setTopPanel() {
+        topPanel.setOpaque(false);
         topPanel.add(addManhuaButton);
         topPanel.add(removeManhuaButton);
         topPanel.add(saveManhuaButton);
@@ -85,6 +86,7 @@ public class ManhuaReadingListGUI extends JFrame {
 
     // EFFECTS: adds panel scroller, viewAll button, and panel with given features
     private void setBottomPanel() {
+        bottomPanel.setOpaque(false);
         bottomPanel.setLayout(new BorderLayout());
         bottomPanel.add(jlist, BorderLayout.CENTER);
         bottomPanel.add(viewAllManhuaButton, BorderLayout.SOUTH);
@@ -99,13 +101,15 @@ public class ManhuaReadingListGUI extends JFrame {
         jlist.setVisibleRowCount(0);
     }
 
-    // EFFECTS: sets the top and bottom panels
+    // EFFECTS: sets the top and bottom panel;
+    //          set background
     private void setBothPanels() {
+        frame.setContentPane(new JLabel(new ImageIcon("./data/backgroundImage.jpg")));
+        frame.setLayout(new FlowLayout());
         setTopPanel();
-        add(topPanel);
-
+        frame.add(topPanel);
         setBottomPanel();
-        add(bottomPanel);
+        frame.add(bottomPanel);
     }
 
     // EFFECTS: initializes all buttons for user interaction
@@ -202,6 +206,7 @@ public class ManhuaReadingListGUI extends JFrame {
         loadManhuaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 listModel.clear();
                 try {
                     manhuaList = jsonReader.read();
