@@ -1,5 +1,7 @@
 package ui;
 
+import exceptions.EmptyTitleException;
+import exceptions.EmptyWebsiteException;
 import model.Manhua;
 import model.ManhuaList;
 import persistence.JsonReader;
@@ -98,7 +100,6 @@ public class ManhuaReadingListGUI extends JFrame {
 
         jlist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jlist.setLayoutOrientation(JList.VERTICAL);
-        jlist.setVisibleRowCount(0);
     }
 
     // EFFECTS: sets the top and bottom panel;
@@ -129,22 +130,22 @@ public class ManhuaReadingListGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String manhuaTitle = JOptionPane.showInputDialog(jlist, "Enter a manhua title: ");
-                String manhuaWebsite = JOptionPane.showInputDialog(jlist,
-                        "Enter the corresponding website: ");
-                Manhua manhua = new Manhua(manhuaTitle, manhuaWebsite);
-                boolean invalidMessage = manhuaList.containsManhua(manhua.getTitle(), manhua.getWebsite());
-                if (invalidMessage) {
-                    JOptionPane.showMessageDialog(frame, "Manhua already exists.");
-                    return;
-                } else if (manhuaTitle == null || manhuaWebsite == null || manhuaTitle.isEmpty()
-                        || manhuaWebsite.isEmpty()) {
-                    JOptionPane.showMessageDialog(frame, "Invalid");
-                    return;
+                String manhuaWebsite = JOptionPane.showInputDialog(jlist, "Enter the corresponding website: ");
+                if (!(manhuaTitle == null) && !(manhuaWebsite == null)) {
+                    try {
+                        Manhua manhua = new Manhua(manhuaTitle, manhuaWebsite);
+                        if (manhuaList.containsManhua(manhua.getTitle(), manhua.getWebsite())) {
+                            JOptionPane.showMessageDialog(frame, "Manhua already exists.");
+                        }
+                        manhuaList.addManhua(manhua);
+                        listModel.addElement(manhua.toFormat());
+                        JOptionPane.showMessageDialog(frame, "Manhua successfully added!");
+                    } catch (EmptyTitleException emptyTitleException) {
+                        JOptionPane.showMessageDialog(frame, "Invalid");
+                    } catch (EmptyWebsiteException emptyWebsiteException) {
+                        JOptionPane.showMessageDialog(frame, "Invalid");
+                    }
                 }
-                    manhuaList.addManhua(manhua);
-                    String manhuaFormatted = manhua.toFormat();
-                    listModel.addElement(manhuaFormatted);
-                    JOptionPane.showMessageDialog(frame, "Manhua successfully added!");
             }
         });
     }

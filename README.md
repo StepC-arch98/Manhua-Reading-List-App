@@ -23,3 +23,6 @@ My user stories:
 -	As a user, I want to be able to view all manhuas in my reading list 
 -	As a user, I want to be able to save my manhua reading list to file 
 -	As a user, I want to be able to load my manhua reading list from file 
+
+## **Phase 4: Task 2**
+Test and design all methods of the Manhua class in the model package to be robust.  

@@ -1,5 +1,7 @@
 package ui;
 
+import exceptions.EmptyTitleException;
+import exceptions.EmptyWebsiteException;
 import model.Manhua;
 import model.ManhuaList;
 import persistence.JsonReader;
@@ -95,8 +97,14 @@ public class ManhuaReadingListApp {
         String manhuaTitle = input.nextLine();
         System.out.println("Enter the corresponding website: ");
         String manhuaWebsite = input.nextLine();
-        manhuaList.addManhua(new Manhua(manhuaTitle, manhuaWebsite));
-        System.out.println("Manhua successfully added!");
+        try {
+            manhuaList.addManhua(new Manhua(manhuaTitle, manhuaWebsite));
+            System.out.println("Manhua successfully added!");
+        } catch (EmptyTitleException e) {
+            System.out.println("No manhua's title inputted");
+        } catch (EmptyWebsiteException e) {
+            System.out.println("No manhua's website inputted");
+        }
     }
 
     // MODIFIES: this

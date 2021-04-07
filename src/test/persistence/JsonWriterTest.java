@@ -1,5 +1,7 @@
 package persistence;
 
+import exceptions.EmptyTitleException;
+import exceptions.EmptyWebsiteException;
 import model.Manhua;
 import model.ManhuaList;
 
@@ -51,7 +53,7 @@ class JsonWriterTest {
     }
 
     @Test
-    void testWriterGeneralManhuaList() {
+    void testWriterGeneralManhuaList() throws EmptyTitleException, EmptyWebsiteException {
         try {
             manhuaList.addManhua(new Manhua("Aidin", "Webcomics"));
             manhuaList.addManhua(new Manhua("The Fatal Kiss", "Manga Sy"));

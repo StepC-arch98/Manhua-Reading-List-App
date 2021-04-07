@@ -1,5 +1,7 @@
 package persistence;
 
+import exceptions.EmptyTitleException;
+import exceptions.EmptyWebsiteException;
 import model.Manhua;
 import model.ManhuaList;
 
@@ -64,7 +66,13 @@ public class JsonReader {
     private void addManhua(ManhuaList manhuaList, JSONObject jsonObject) {
         String title = jsonObject.getString("title");
         String website = String.valueOf(jsonObject.getString("website"));
-        Manhua manhua = new Manhua(title, website);
-        manhuaList.addManhua(manhua);
+        try {
+            Manhua manhua = new Manhua(title, website);
+            manhuaList.addManhua(manhua);
+        } catch (EmptyTitleException emptyTitleException) {
+            emptyTitleException.printStackTrace();
+        } catch (EmptyWebsiteException emptyWebsiteException) {
+            emptyWebsiteException.printStackTrace();
+        }
     }
 }

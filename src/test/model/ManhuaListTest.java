@@ -1,5 +1,7 @@
 package model;
 
+import exceptions.EmptyTitleException;
+import exceptions.EmptyWebsiteException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +15,7 @@ class ManhuaListTest {
     private    Manhua manhua3;
 
     @BeforeEach
-    void runBefore() {
+    void runBefore() throws EmptyTitleException, EmptyWebsiteException {
         testManhuaList = new ManhuaList("Estephany's Manhua List");
         manhua1 = new Manhua("The Fatal Kiss","Manga Sy");
         manhua2 = new Manhua("Aidin", "Zinmanga");
