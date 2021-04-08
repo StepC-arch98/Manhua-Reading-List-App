@@ -69,10 +69,10 @@ public class JsonReader {
         try {
             Manhua manhua = new Manhua(title, website);
             manhuaList.addManhua(manhua);
-        } catch (EmptyTitleException emptyTitleException) {
-            emptyTitleException.printStackTrace();
-        } catch (EmptyWebsiteException emptyWebsiteException) {
-            emptyWebsiteException.printStackTrace();
+        } catch (EmptyTitleException e) {
+            e.printStackTrace();
+        } catch (EmptyWebsiteException e) {
+            e.printStackTrace();
         }
     }
 }

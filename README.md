@@ -25,4 +25,11 @@ My user stories:
 -	As a user, I want to be able to load my manhua reading list from file 
 
 ## **Phase 4: Task 2**
-Test and design all methods of the Manhua class in the model package to be robust.  
+Test and design the Manhua class in the model package to be robust. The Manhua constructor is the robust design.
+
+## **Phase 4: Task 3**
+-	Derive a Website class from the Manhua Class. The Manhua class has the website name as a field, but there isn't much
+room for more functionality for this field, so creating a new class just for the website source would allow for this
+field to have more functionality, while keeping the Manhua class with a single responsibility, which is to maintain the 
+characteristics of a given manhua. Thus, doing this refactoring would result in the Manhua class calling on the Website
+class in the constructor.

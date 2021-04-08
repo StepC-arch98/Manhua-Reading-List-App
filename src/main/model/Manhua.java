@@ -35,7 +35,7 @@ public class Manhua implements Writable {
         return website;
     }
 
-    // EFFECTS: returns string in formatted version
+    // EFFECTS: returns given strings into formatted string version
     public String toFormat() {
         return "Title = " + title + ", Website = " + website + "";
     }
