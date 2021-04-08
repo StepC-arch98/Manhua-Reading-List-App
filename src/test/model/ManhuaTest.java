@@ -24,7 +24,7 @@ class ManhuaTest {
     }
 
     @Test
-    void testConstructorWithTitleExceptionOfEmptyString() {
+    void testConstructorWithTitleException() {
         try {
             testManhua = new Manhua("", "Manga Sy");
             fail("EmptyTitleException should have been caught");
@@ -36,7 +36,7 @@ class ManhuaTest {
     }
 
     @Test
-    void testConstructorWithWebsiteExceptionOfEmptyString() {
+    void testConstructorWithWebsiteException() {
         try {
             testManhua = new Manhua("The Fatal Kiss", "");
             fail("EmptyWebsiteException should have been caught");
@@ -48,7 +48,7 @@ class ManhuaTest {
     }
 
     @Test
-    void testConstructorWithBothExceptionsOfEmptyString() {
+    void testConstructorWithBothExceptions() {
         try {
             testManhua = new Manhua("", "");
             fail("Exception should have been caught");

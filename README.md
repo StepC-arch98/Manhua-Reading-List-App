@@ -25,11 +25,16 @@ My user stories:
 -	As a user, I want to be able to load my manhua reading list from file 
 
 ## **Phase 4: Task 2**
-Test and design the Manhua class in the model package to be robust. The Manhua constructor is the robust design.
+Tested and designed all methods from the Manhua class in the model package to be robust. 
 
 ## **Phase 4: Task 3**
--	Derive a Website class from the Manhua Class. The Manhua class has the website name as a field, but there isn't much
-room for more functionality for this field, so creating a new class just for the website source would allow for this
-field to have more functionality, while keeping the Manhua class with a single responsibility, which is to maintain the 
-characteristics of a given manhua. Thus, doing this refactoring would result in the Manhua class calling on the Website
-class in the constructor.
+Possible refactoring changes:
+-	Derive a Website class from the Manhua Class. The Manhua class has the website as a string field, but there isn't 
+much room for more functionality for this field, so creating a new class just for the website source would allow 
+for more functionality and cohesion, while keeping the Manhua class with a single responsibility, which is to maintain 
+the given characteristics of a manhua. Thus, doing this refactoring would result in the Manhua class calling on the 
+Website class.
+- Make the ManhuaList extend or somehow be in sync with DefaultListModel to avoid repetitive code in the GUI with 
+regards to the display and track of the list.
+
+
